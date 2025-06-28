@@ -7,7 +7,9 @@ from typing import Callable, List
 
 def run(solve: Callable[[List[str]], List[str]]):
     total_start_time = time.time()
-    for input_file_path in sorted(glob.glob("*.in"), key=str.lower):
+    for input_file_path in sorted(
+        glob.glob("*.in"), key=lambda x: (x.lower() != x, x.lower())
+    ):
         base_name = os.path.splitext(input_file_path)[0]
         output_file_path = f"{base_name}.out"
         expect_file_path = f"{base_name}.expect"
