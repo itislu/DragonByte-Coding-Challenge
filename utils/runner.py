@@ -41,7 +41,9 @@ def run(solve: Callable[[List[str]], List[str]]):
                     print(f"FAILURE: Output does not match '{expect_file_path}'.")
 
         except Exception as e:
-            print(f"ERROR: An error occurred while processing '{input_file_path}': {e}")
+            print(
+                f"ERROR: An error occurred while processing '{input_file_path}': {e} {type(e)}"
+            )
 
     total_duration = time.time() - total_start_time
     print(f"--- All files processed in {total_duration:.4f}s. ---")
